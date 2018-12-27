@@ -8,8 +8,8 @@
 </head>
 <body>
   <section id="todo">
-      <form>
-          <input type="text" />
+      <form class="add">
+          <input type="text" class="title" />
           <input type="submit" />
       <form>
       <ul class="progress">
@@ -28,7 +28,31 @@
       </ul>
   </section>
   <script src="renderer.js"></script>
+  <script src="html.js"></script>
+  <script src="con1.js"></script>
   <script src="todo.js"></script>
-</body>
+  <script>
+      var progressItem = new Item('#todo .progress li');
+      var completeItem = new Item('#todo .complete li');
 
+      var progressList = new List('#todo .progress', progressItem);
+      var completeList = new List('#todo .complete', completeItem);
+
+    var add = function(taskManager) {
+        var title = document.querySelector('#todo .title');
+
+        document.querySelector('#todo .add').onsubmit = function(e){
+            var v = title.value.trim();
+            if(v) taskManager.add(v);
+            title.value='';
+            return false
+            
+        }
+       
+    }
+    var htmlListManager = new ListManager(add, progressList, completeList);
+    var todo = new TaskManager();
+    todo.setRenderer(htmlListManager);
+  </script>
+</body>
 </html>
