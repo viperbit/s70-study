@@ -1,11 +1,11 @@
 function Renderer() {}
 
 Renderer.prototype.init = function(taskManager) {
-  this.taskManager = taskManager;
+  this._taskManager = taskManager;
   this._init();
 };
 Renderer.prototype.render = function(tasks) {
-  this.tasks = tasks;
+  this._tasks = tasks;
   this._render();
 };
 Renderer.prototype._init = function() {

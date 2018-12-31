@@ -27,8 +27,8 @@ var TaskManager = (function() {
   fn._render = function() {
     this._renderer.render(this._tasks.slice(0));
   };
-  fn._checkTask = function() {
-    return task instanceof Task && this._tasks.indexIf(task) > -1;
+  fn._checkTask = function(task) {
+    return task instanceof Task && this._tasks.indexOf(task) > -1;
   };
   fn.setRenderer = function(renderer) {
     if (!(renderer instanceof Renderer)) return;
@@ -45,7 +45,7 @@ var TaskManager = (function() {
     this._render();
   };
   fn.toggle = function(task) {
-    if (this._checkTask(task)) task.toggle();
+    if (this._checkTask(task)) tasks.toggle();
     this._render();
   };
   return TaskManager;
