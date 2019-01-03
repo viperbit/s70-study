@@ -41,11 +41,11 @@ var TaskManager = (function() {
   };
   fn.remove = function(task) {
     var tasks = this._tasks;
-    if (this._checkTask(task)) tasks.splice(indexOf(task), 1);
+    if (this._checkTask(task)) tasks.splice(tasks.indexOf(task), 1);
     this._render();
   };
   fn.toggle = function(task) {
-    if (this._checkTask(task)) tasks.toggle();
+    if (this._checkTask(task)) task.toggle();
     this._render();
   };
   return TaskManager;

@@ -52,7 +52,7 @@ var List = (function() {
     this._item.init(taskManager);
   };
   fn.clear = function() {
-    this._el.innerHtml = '';
+    this._el.innerHTML = '';
   };
   fn.add = function(task) {
     this._el.appendChild(this._item.add(task));
@@ -80,13 +80,13 @@ var Item = (function() {
   };
   fn.add = function(task) {
     var el = this._el.cloneNode(true);
-    el.querySelector('p').innerHtml = task;
+    el.querySelector('p').innerHTML = task;
     var taskManager = this._taskManager;
     var btns = el.querySelectorAll('input');
-    btns[0].onClick = function() {
+    btns[0].onclick = function() {
       taskManager.toggle(task);
     };
-    btns[1].onClick = function() {
+    btns[1].onclick = function() {
       taskManager.remove(task);
     };
     return el;
